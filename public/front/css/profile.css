@@ -1,0 +1,15 @@
+.profile-content {
+    background: url("../img/log-bg.jpg") center no-repeat;
+    background-size: cover;
+    padding: 3rem 1.5rem;
+    min-height: 550px;
+}
+.list-group-item.active{
+    background-color: #374775;
+    border-color: #374775;
+
+}
+.aa-list-group .list-group-item{
+    background-color: transparent; 
+    border: none; 
+}

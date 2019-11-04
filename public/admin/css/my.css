@@ -1,0 +1,235 @@
+
+table.dataTable tbody>tr:hover{
+    cursor: pointer;
+}
+table.dataTable tr.selected{
+    background-color: #f1f1f1;
+}
+.form-group.form-md-line-input{
+    margin-bottom: 30px!important; 
+}
+.blockUI.blockOverlay{
+    z-index: 99999998!important;
+}
+.blockUI.blockMsg.blockElement{
+    z-index: 99999999!important;
+}
+.blockUI.blockMsg.blockPage{
+    z-index: 99999999!important;
+}
+.blockUI.blockOverlay,.blockUI.blockMsg{
+    cursor: auto!important;
+}
+.blockUI.blockMsg{
+    top: 15%!important;
+    left: 35%!important;
+}
+.form-control .select2-choice {
+    border: 1px solid #e5e5e5!important;
+    background-color: #fff!important;
+    background-image: none!important;
+    filter: none!important;
+    height: 34px!important;
+    padding: 3px 0 0px 12px!important;
+}
+/*modal fullscreen*/ 
+
+
+
+.modal.modal-fullscreen{
+    padding-right: 0!important;
+}
+.modal.modal-fullscreen .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    animation-duration:0.6s;
+}
+.modal.modal-fullscreen .modal-body{
+    min-height: 500px;
+}
+body.modal-open {
+    overflow: hidden!important;
+}
+.modal.modal-fullscreen .modal-content {
+    height: auto;
+    min-height: 100%;
+    border: 0 none;
+    border-radius: 0;
+}
+.fc-license-message{
+    display: none!important;
+}
+.fc-view, .fc-view>table{
+    z-index: auto!important;
+}
+.form-group label span.asterisk{
+    color:red;
+}
+
+.pricing-head h3{
+    font-weight: bold;
+    font-size: 30px;
+}
+.pricing-head h3 span, .pricing-head h4 span{
+    font-size: 20px;
+}
+.pricing-content li{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 18px 15px;
+}
+.pricing-head h3 span, .pricing-head h4 span {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+.overlay .search{
+    color: #fff!important;
+}
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 10%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.menu-icon i{
+    font-size: 35px;
+    color: #117fde;
+}
+.menu-icon h3{
+    word-break: break-word;
+    color: #fff;
+    font-size: 13px;
+}
+#MenuSearch .modal-content{
+    background-color: rgb(77, 91, 105,0.4) !important;
+}
+#MenuSearch .modal-backdrop {
+    background-color: rgba(0,0,0,.0001) !important;
+}
+
+.image_box{
+    position: relative;
+}
+.upload-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #fff;
+}
+
+.image_box:hover .upload-overlay {
+    opacity: .8;
+}
+
+.upload-overlay .icon{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.upload-overlay .icon-delete .fa {
+    color: #d08a8a;
+    font-size: 40px!important;
+}
+.upload-overlay .icon-view .fa {
+    color: #ccc;
+    font-size: 40px!important;
+}
+.upload-overlay .icon-edit .fa {
+    color: #ccc;
+    font-size: 40px!important;
+}
+
+.upload-overlay .icon-folder-remove {
+    color: #ff0000;
+    font-size: 50px;
+}
+.uploaded-images .image_box{
+    float: left;
+}
+
+.c-page-content-message{
+    text-align: center; background-color: #fff; padding: 60px; color: #e08283; font-size: 25px; margin-top: 100px;
+}
+
+
+.pricing .pricing-content .btn{
+    margin-left: 10px;
+}
+.progress {
+    height: 20px!important;
+}
+.aa-background-red{
+    background-color: #da7170;
+    color: #fff;
+}
+
+.table-unread-noti{
+    background-color: #909090;
+    color: #fff;
+}
+.swal-overlay{
+    z-index: 100060;
+}

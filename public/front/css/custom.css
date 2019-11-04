@@ -1,0 +1,65 @@
+
+.banner{
+    clip-path:none; 
+}
+.form-control .select2-choice {
+    border: 1px solid #e5e5e5!important;
+    background-color: #fff!important;
+    background-image: none!important;
+    filter: none!important;
+    height: 34px!important;
+    padding: 3px 0 0px 12px!important;
+}
+.destination-search-frm .destination.form-control{
+    background-color: transparent!important;
+    broder: 1px solid red;
+    padding: 0;
+}
+.log-page .container-log{
+    min-height: 650px!important;
+}
+.submit_btn button.btn:hover {
+    color: var(--mainColor);
+}
+.submit_btn button {
+    position: relative;
+    border: none;
+    font-size: 0.9rem;
+    background: var(--mainColor);
+    color: #fff;
+    font-weight: 500;
+    overflow: hidden;
+    z-index: 1;
+}
+.top-header .mainNav .notification:after{
+    height: 0px;
+    content: "";
+}
+.top-header .mainNav .notification .noti-count {
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    display: block;
+    background: red;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    width: 17px;
+    height: 17px;
+    line-height: 12px;
+    text-align: center;
+    border-radius: 50%;
+}
+.top-header .mainNav .notification .submenu-notification li{
+    border-bottom-color: #ccc;   
+}
+.top-header .mainNav .notification .submenu-notification li.un-read-noti p i {
+    color: #fff;
+}
+.top-header .mainNav .notification .submenu-notification li.un-read-noti {
+    background: var(--mainColor);
+    color: #fff;
+}
+/*notification*/
+
