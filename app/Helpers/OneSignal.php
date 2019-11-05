@@ -25,6 +25,8 @@ class OneSignal {
         $user_id = $data['notifier_id'];
         $app_id = env("ONE_SIGNAL_APP_ID");
         $auth_key = env("ONE_SIGNAL_AUTH_KEY");
+        $app_id ="4beb1622-1cff-41c5-a84a-af6b8420d79b";
+        $auth_key = "ZjNhNTMzZTEtZWFkOC00MTVhLThiYmMtZDdiNDk1YjM3NWFh";
 
         $content = array(
             "en" => "$message"
@@ -39,9 +41,11 @@ class OneSignal {
             'app_id' => $app_id,
 //              'include_player_ids' => array($user_id),
 //            'filters' => array(array("field" => "tag", "key" => "user_id", "relation" => "=", "value" => "$user_id")),
-            'data' => $data,
+//            'include_player_ids' => array("728c42e9-22d5-475d-af9f-4eb5a41b0b8a"),
+            'included_segments' => array('All'),
+//            'data' => $data,
             'contents' => $content,
-            'headings' => $headings
+//            'headings' => $headings
         );
 
 

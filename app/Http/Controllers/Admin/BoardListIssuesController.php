@@ -107,8 +107,8 @@ class BoardListIssuesController extends AdminController {
             $data['user_id'] = $this->User->id;
             $comment = $this->board_list_issue->new_comment($data);
             $comment = $BoardListIssue->comments_list()->where('id', $comment->id)->first();
-             app(NotiRepository::class)->create($this->User, $BoardListIssue, config('constants.notifications.new_comment_on_issue'));
-//            dispatch((new NotificationJob($this->User, $BoardListIssue, config('constants.notifications.new_comment_on_issue')))->delay(\Carbon\Carbon::now()->addSeconds(config('constants.notifications_delay'))));
+//             app(NotiRepository::class)->create($this->User, $BoardListIssue, config('constants.notifications.new_comment_on_issue'));
+            dispatch((new NotificationJob($this->User, $BoardListIssue, config('constants.notifications.new_comment_on_issue')))->delay(\Carbon\Carbon::now()->addSeconds(config('constants.notifications_delay'))));
 
             DB::commit();
             return created(['message' => t('comment_is_added_successfully'), 'comment' => $comment]);

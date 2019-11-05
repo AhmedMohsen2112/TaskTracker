@@ -8,6 +8,7 @@ use App\Models\Repositories\Contracts\BoardRepositoryInterface;
 use App\Http\Requests\Admin\BoardsRequest;
 use Validator;
 use DB;
+use Mail;
 
 class BoardsController extends AdminController {
 
@@ -21,6 +22,11 @@ class BoardsController extends AdminController {
     }
 
     public function index(Request $request) {
+//         dispatch(new \App\Jobs\SendMailJob(
+//                                "mr.success789@gmail.com", new \App\Mail\BoardListIssueReminderMail(['title' => 'test', 'due_date' => 'test']))
+//                        );
+//        Mail::to("mr.success789@gmail.com")->send(new \App\Mail\BoardListIssueReminderMail(['title'=>'','due_date'=>'']));
+//        dd(app(\App\Models\Repositories\Contracts\BoardListIssueRepositoryInterface::class)->getAll(['option'=>['reminder']])->get());
         $this->data['boards'] = $this->board->getList();
 
     

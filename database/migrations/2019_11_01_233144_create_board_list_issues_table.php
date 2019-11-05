@@ -17,6 +17,7 @@ class CreateBoardListIssuesTable extends Migration {
             $table->string('title');
             $table->longText('description');
             $table->date('due_date')->nullable();
+            $table->timestamp('reminder_at')->nullable();
             $table->integer('ord');
             $table->bigInteger('list_id')->unsigned()->nullable();
             $table->foreign('list_id')->references('id')->on('board_lists');

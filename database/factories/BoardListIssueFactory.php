@@ -19,11 +19,11 @@ use Faker\Generator as Faker;
  */
 
 $factory->define(BoardListIssue::class, function (Faker $faker) {
+    static $order = 1;
     return [
-        'title' => $faker->realText(rand(50,120)),
-        'description' => $faker->realText(rand(120,180)),
-        'ord'=>1,
-        'list_id'=>factory_create(BoardList::class)->id
-       
+        'title' => $faker->realText(rand(50, 120)),
+        'description' => $faker->realText(rand(120, 180)),
+        'ord' => $order++,
+        'list_id' => factory_create(BoardList::class)->id
     ];
 });

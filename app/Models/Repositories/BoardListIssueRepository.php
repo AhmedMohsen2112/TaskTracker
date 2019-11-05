@@ -18,7 +18,7 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
      * UserRepository constructor.
      * @param App\Models\User $user
      */
-    public function __construct(BoardListIssue $board_list_issue,Comment $comment) {
+    public function __construct(BoardListIssue $board_list_issue, Comment $comment) {
         $this->model = $board_list_issue;
         $this->comment = $comment;
     }
@@ -34,8 +34,18 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
         if (isset($where_array['list'])) {
             $result->where('board_list_issues.board_id', $where_array['board']);
         }
+        if (isset($where_array['option'])) {
+            if (in_array('reminder', $where_array['option'])) {
+                $result->where(function($query) {
+                    $query->whereRaw("COALESCE(DATEDIFF(board_list_issues.due_date, CURDATE()),0)=3");
+                    $query->whereNull("board_list_issues.reminder_at");
+                });
+            }
+        }
         $result = $result->select([
-            'board_list_issues.id', "board_list_issues.title", "users.username as created_by", "board_list_issues.created_at"
+            'board_list_issues.id', "board_list_issues.title", "users.username as created_by", "board_list_issues.created_at",
+            "users.email as user_email",
+            DB::RAW("COALESCE(DATEDIFF(board_list_issues.due_date, CURDATE()),0) as due_date_diff")
         ]);
         return $result;
     }
@@ -121,6 +131,7 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
         ]);
         return $item;
     }
+
     /**
      * sorting up issue
      * 
@@ -129,19 +140,18 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
      * @param int $old_order
      * @return void
      */
-    public function sorting_up($id,$index,$old_order,$list_id) {
+    public function sorting_up($id, $index, $old_order, $list_id) {
 
-           $this->model->where('id', '!=', $id)
-                        ->where('list_id', $list_id)
-                        ->where(function ($query) use($old_order, $index) {
-                            $query->where('ord', '>', $old_order)
-                            ->where('ord', '<=', $index);
-                        })
-                        ->update(['ord' => DB::raw("ord-1")]);
+        $this->model->where('id', '!=', $id)
+                ->where('list_id', $list_id)
+                ->where(function ($query) use($old_order, $index) {
+                    $query->where('ord', '>', $old_order)
+                    ->where('ord', '<=', $index);
+                })
+                ->update(['ord' => DB::raw("ord-1")]);
     }
-   
-    
-     /**
+
+    /**
      * sorting down issue
      * 
      * @param int $id
@@ -149,19 +159,18 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
      * @param int $old_order
      * @return void
      */
-    public function sorting_down($id,$index,$old_order,$list_id) {
+    public function sorting_down($id, $index, $old_order, $list_id) {
 
-       $this->model->where('id', '!=', $id)
-                        ->where('list_id', $list_id)
-                        ->where(function ($query) use($old_order, $index) {
-                            $query->where('ord', '>=', $index)
-                            ->where('ord', '<', $old_order);
-                        })
-                        ->update(['ord' => DB::raw("ord+1")]);
+        $this->model->where('id', '!=', $id)
+                ->where('list_id', $list_id)
+                ->where(function ($query) use($old_order, $index) {
+                    $query->where('ord', '>=', $index)
+                    ->where('ord', '<', $old_order);
+                })
+                ->update(['ord' => DB::raw("ord+1")]);
     }
-    
-    
-     /**
+
+    /**
      * update list and order
      * 
      * @param int $id
@@ -169,10 +178,10 @@ class BoardListIssueRepository extends BaseRepository implements BoardListIssueR
      * @param int $list_id
      * @return void
      */
-    public function updateListAndOrder($id,$index,$list_id) {
+    public function updateListAndOrder($id, $index, $list_id) {
 
-               $this->model->where('id', $id)
-                    ->update(['ord' => $index, 'list_id' => $list_id]);
+        $this->model->where('id', $id)
+                ->update(['ord' => $index, 'list_id' => $list_id]);
     }
 
     /**

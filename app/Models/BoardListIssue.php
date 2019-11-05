@@ -64,7 +64,7 @@ class BoardListIssue extends Model {
      *
      */
     public function assigned_list() {
-        return $this->assigned()->whereNull('deleted_at')->select('id', 'name', 'phone')->get();
+        return $this->assigned()->whereNull('deleted_at')->select('id', 'name', 'phone','email')->get();
     }
     public function comments_list() {
         return $this->comments()->join('users','users.id','=','comments.created_by')
